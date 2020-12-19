@@ -1,5 +1,25 @@
 footer {
-    p {
-        border: 2px solid red;
+    background-color: #404447;
+    width: 100%;
+    .wrapper {
+        margin: 0 auto;
+        max-width: 1040px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: stretch;
+    }
+    .content {
+        font-weight: 300;
+        color: #aab1b6;
+        a {
+            color: #aab1b6;
+        }
+        p {
+            line-height: 22px;
+            font-size: 13px;
+        }
     }
 }
