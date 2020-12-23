@@ -1,10 +1,10 @@
-
 header {
     display: flex;
 	justify-content: center;
     width: 100%;
     box-shadow: 0 0 4px 0 #4f5d75;
     padding: 15px 0 5px;
+    z-index: 1;
     .wrapper {
         display: flex;
         flex-direction: row;
@@ -26,12 +26,17 @@ header {
             margin: 0 20px;
         }
         a {
+            display: inline-block;
             color: #4f5d75;
             text-decoration: none;
             padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
             &:hover {
                 border-bottom: 2px solid #2d3142;
             }
         }
+    }
+    .acessibility-link {
+        width: 21px;
     }
 }

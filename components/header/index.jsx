@@ -1,3 +1,5 @@
+import { faWheelchair } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./style.scss"
 
 export default function Header() {
@@ -16,6 +18,11 @@ export default function Header() {
                     <li><a href="/">Serviços</a></li>
                     <li><a href="/">Gestão</a></li>
                     <li><a href="/">Cidade</a></li>
+                    <li>
+                    <a href="#" className="acessibility-link">
+                        <FontAwesomeIcon icon={faWheelchair} color="#4f5d75" />
+                    </a>
+                    </li>
                 </ul>
             </nav>
           </div>
