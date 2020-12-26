@@ -16,11 +16,7 @@ export default function Home() {
   const [data, setData] = useState({});
   const [errorData, setErrorData] = useState({});
 
-  const handleSubmit = (e) => {
-
-    e.preventDefault();
-
-    const query = document.querySelector('#numeroCadastro').value
+  const handleSubmit = (action) => {
 
     setLoading(true)
     setError(false)
@@ -29,12 +25,14 @@ export default function Home() {
 
       setLoading(false)
 
-      fetch(`http://localhost:3000/api/iptu/${query}`)
+      fetch(`http://localhost:3000/api/transparencia/${action}`)
       .then(response => response.json())
       .then(res => {
 
+        console.log(res)
+
         if (!res.error) {
-          setData(res)
+          //setData(res)
         } else {
           setError(true)
           setErrorData(res)
@@ -44,7 +42,7 @@ export default function Home() {
         console.log("error");
     });
 
-    }, 1000)
+    }, 2000)
   }
 
   return (
@@ -64,19 +62,16 @@ export default function Home() {
             <p>O Portal da Transparência de Bom destino, permite ao cidadão acompanhar a execução orçamentária dos programas e ações de governo em âmbito municipal passando a ser um fiscal da correta aplicação dos recursos públicos.</p>
 
             <ul>
-                <li>Convênios</li>
-                <li>Licitações</li>
-                <li>Recursos Transferidos</li>
-                <li>cartões de pagamento</li>
+                <li onClick={() => handleSubmit('convenios')}>Convênios</li>
+                <li onClick={() => handleSubmit('licitacoes')}>Licitações</li>
+                <li onClick={() => handleSubmit('recursos')}>Recursos Transferidos</li>
+                <li onClick={() => handleSubmit('cartoes')}>cartões de pagamento</li>
             </ul>
 
-            {/* <form onSubmit={handleSubmit}>
-                <input type="text" className="field" id="numeroCadastro" required placeholder="Número do cadastro IPTU" />
-                <button>Pesquisar</button>
-            </form>
-
             {loading && <Loader /> }
-            {error && <Error content={errorData} /> } */}
+            {error && <Error content={errorData} /> }
+
+
         </div>
       </main>
 
