@@ -13,15 +13,16 @@ export default function Home() {
   const [boleto, setBoleto] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const request = () => {
+  const handleSubmit = (e) => {
 
+    e.preventDefault();
+
+    setBoleto(false)
     setLoading(true)
 
     setTimeout(()=> {
 
       setLoading(false)
-
-      //TODO: incluir validacao e nova pesquisa
 
       setBoleto(true)
     }, 3000)
@@ -44,10 +45,10 @@ export default function Home() {
             <p>Este site é restrito aos contribuintes da Prefeitura Municipal de Bom Destino. <br/>
             Por favor, identifique seu imóvel fornecendo os dados solicitados:</p>
 
-            <div>
-                <input type="text" className="field" placeholder="Número do cadastro IPTU" />
-                <button onClick={()=> request()}>Pesquisar</button>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" className="field" required placeholder="Número do cadastro IPTU" />
+                <button>Pesquisar</button>
+            </form>
 
             {loading && <Loader /> }
 
