@@ -23,3 +23,15 @@ footer {
         }
     }
 }
+
+@media only screen and (max-width: 1139px) {
+    footer {
+        .wrapper {
+            flex-direction: column;
+            padding: 5%;
+        }
+        .content {
+            width: 100%;
+        }
+    }
+}

@@ -15,7 +15,6 @@
         list-style: none;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
         justify-content: space-around;
         align-items: center;
         align-content: center;
@@ -35,5 +34,19 @@
     span {
         margin-top: 10px;
         display: block;
+    }
+}
+
+@media only screen and (max-width: 1139px) {
+    .services {
+        overflow: auto;
+        margin-top: 30%;
+        ul {
+            justify-content: flex-start;
+        }
+    }
+    .container-services {
+        background-position: center bottom;
+        background-size: 320%;
     }
 }
