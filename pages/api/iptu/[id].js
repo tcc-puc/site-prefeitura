@@ -1,6 +1,6 @@
 const mock = [
     {
-        "id": 12345,
+        "id": 1234,
         "inscricao": "0000180434",
         "codigoLogradouro": "039748",
         "tributo": "IPTU Territorial",
@@ -101,7 +101,7 @@ export default function handler(req, res) {
         return res.status(404).json({
             "error": "search-0001",
             "message": "Dados nāo encontrados, por favor tente novamente.",
-            "detail": "Garanta que os dados digitados estāo corretos",
+            "detail": "Verifique se os dados digitados estāo corretos",
             "help": ""
         })
     }

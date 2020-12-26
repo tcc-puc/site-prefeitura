@@ -7,12 +7,15 @@ import Footer from '../components/footer'
 import Services from '../components/services'
 import Boleto from '../components/boleto'
 import Loader from '../components/loader'
+import Error from '../components/error'
 
 export default function Home() {
 
   const [boleto, setBoleto] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [data, setData] = useState({});
+  const [errorData, setErrorData] = useState({});
 
   const handleSubmit = (e) => {
 
@@ -22,6 +25,7 @@ export default function Home() {
 
     setBoleto(false)
     setLoading(true)
+    setError(false)
 
     setTimeout(()=> {
 
@@ -34,8 +38,10 @@ export default function Home() {
         if (!res.error) {
           setData(res)
           setBoleto(true)
+        } else {
+          setError(true)
+          setErrorData(res)
         }
-
 
       }).catch(function() {
         console.log("error");
@@ -67,6 +73,7 @@ export default function Home() {
             </form>
 
             {loading && <Loader /> }
+            {error && <Error content={errorData} /> }
 
             { boleto && <Boleto content={data} /> }
 
@@ -144,6 +151,13 @@ export default function Home() {
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
+        }
+
+        form {
+          max-width: 600px;
+          display: block;
+          width: 100%;
+          text-align: center;
         }
 
         .field {
