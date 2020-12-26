@@ -12,10 +12,13 @@ export default function Home() {
 
   const [boleto, setBoleto] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
+
+    const query = document.querySelector('#numeroCadastro').value
 
     setBoleto(false)
     setLoading(true)
@@ -24,8 +27,21 @@ export default function Home() {
 
       setLoading(false)
 
-      setBoleto(true)
-    }, 3000)
+      fetch(`http://localhost:3000/api/iptu/${query}`)
+      .then(response => response.json())
+      .then(res => {
+
+        if (!res.error) {
+          setData(res)
+          setBoleto(true)
+        }
+
+
+      }).catch(function() {
+        console.log("error");
+    });
+
+    }, 1000)
   }
 
   return (
@@ -46,13 +62,13 @@ export default function Home() {
             Por favor, identifique seu imóvel fornecendo os dados solicitados:</p>
 
             <form onSubmit={handleSubmit}>
-                <input type="text" className="field" required placeholder="Número do cadastro IPTU" />
+                <input type="text" className="field" id="numeroCadastro" required placeholder="Número do cadastro IPTU" />
                 <button>Pesquisar</button>
             </form>
 
             {loading && <Loader /> }
 
-            { boleto && <Boleto /> }
+            { boleto && <Boleto content={data} /> }
 
             <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do IPTU.</p>
         </div>
