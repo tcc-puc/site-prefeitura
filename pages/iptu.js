@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Services from '../components/services'
+import Boleto from '../components/boleto'
 
 export default function Home() {
   return (
@@ -26,6 +27,8 @@ export default function Home() {
                 <input type="text" className="field" placeholder="Número do cadastro IPTU" />
                 <button>Pesquisar</button>
             </form>
+
+            <Boleto />
 
             <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do IPTU.</p>
         </div>
