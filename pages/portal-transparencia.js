@@ -8,11 +8,16 @@ import Footer from '../components/footer'
 import Services from '../components/services'
 import Loader from '../components/loader'
 import Error from '../components/error'
+import ListaLicitacoes from '../components/listaLicitacoes'
+import ListaConvenios from '../components/listaConvenios'
+
 
 export default function Home() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [licitacoes, setLicitacoes] = useState(false);
+  const [convenios, setConvenios] = useState(false);
   const [data, setData] = useState({});
   const [errorData, setErrorData] = useState({});
 
@@ -20,6 +25,8 @@ export default function Home() {
 
     setLoading(true)
     setError(false)
+    setLicitacoes(false)
+    setConvenios(false)
 
     setTimeout(()=> {
 
@@ -29,10 +36,15 @@ export default function Home() {
       .then(response => response.json())
       .then(res => {
 
-        console.log(res)
-
         if (!res.error) {
-          //setData(res)
+          setData(res)
+
+          if (action === "convenios") {
+            setConvenios(true)
+          } else if (action === "licitacoes") {
+            setLicitacoes(true)
+          }
+
         } else {
           setError(true)
           setErrorData(res)
@@ -71,6 +83,8 @@ export default function Home() {
             {loading && <Loader /> }
             {error && <Error content={errorData} /> }
 
+            { licitacoes && <ListaLicitacoes content={data} /> }
+            { convenios && <ListaConvenios content={data} /> }
 
         </div>
       </main>
