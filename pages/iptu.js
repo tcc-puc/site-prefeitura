@@ -1,11 +1,32 @@
+import { useState } from 'react';
+
 import Head from 'next/head'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Services from '../components/services'
 import Boleto from '../components/boleto'
+import Loader from '../components/loader'
 
 export default function Home() {
+
+  const [boleto, setBoleto] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const request = () => {
+
+    setLoading(true)
+
+    setTimeout(()=> {
+
+      setLoading(false)
+
+      //TODO: incluir validacao e nova pesquisa
+
+      setBoleto(true)
+    }, 3000)
+  }
+
   return (
     <div className="container">
       <Head>
@@ -23,12 +44,14 @@ export default function Home() {
             <p>Este site é restrito aos contribuintes da Prefeitura Municipal de Bom Destino. <br/>
             Por favor, identifique seu imóvel fornecendo os dados solicitados:</p>
 
-            <form>
+            <div>
                 <input type="text" className="field" placeholder="Número do cadastro IPTU" />
-                <button>Pesquisar</button>
-            </form>
+                <button onClick={()=> request()}>Pesquisar</button>
+            </div>
 
-            <Boleto />
+            {loading && <Loader /> }
+
+            { boleto && <Boleto /> }
 
             <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do IPTU.</p>
         </div>
