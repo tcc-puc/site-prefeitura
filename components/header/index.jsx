@@ -1,4 +1,4 @@
-import { faWheelchair } from '@fortawesome/free-solid-svg-icons'
+import { faWheelchair, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./style.scss"
 
@@ -7,12 +7,17 @@ export default function Header() {
       <header>
           <div className="wrapper">
             <h1>
-                <a href="/">
+                <a href="/" className="logo">
                     <img src="/logo_bom_destino.png" alt="Prefeitura de Bom Destino" width="280" height="55" />
                 </a>
             </h1>
 
+            <span className="menu-link">
+                <FontAwesomeIcon icon={faBars} color="#4f5d75" />
+            </span>
+            
             <nav className="menu">
+
                 <ul>
                     <li><a href="/">Início</a></li>
                     <li><a href="/">Serviços</a></li>
