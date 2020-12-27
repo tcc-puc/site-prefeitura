@@ -13,23 +13,27 @@ export default function Header() {
             </h1>
 
             <span className="menu-link">
-                <FontAwesomeIcon icon={faBars} color="#4f5d75" />
-            </span>
-            
-            <nav className="menu">
+                <label htmlFor="fldMenu">
+                    <FontAwesomeIcon icon={faBars} color="#4f5d75" />
+                </label>
+                
+                <input type="checkbox"  id="fldMenu" />
 
-                <ul>
-                    <li><a href="/">Início</a></li>
-                    <li><a href="/">Serviços</a></li>
-                    <li><a href="/">Gestão</a></li>
-                    <li><a href="/">Cidade</a></li>
-                    <li>
-                    <a href="#" className="acessibility-link">
-                        <FontAwesomeIcon icon={faWheelchair} color="#4f5d75" />
-                    </a>
-                    </li>
-                </ul>
-            </nav>
+                <nav className="menu">
+                    <ul>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/">Serviços</a></li>
+                        <li><a href="/">Gestão</a></li>
+                        <li><a href="/">Cidade</a></li>
+                        <li>
+                        <a href="#" className="acessibility-link">
+                            <FontAwesomeIcon icon={faWheelchair} color="#4f5d75" />
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            </span>
+
           </div>
     </header>
     )

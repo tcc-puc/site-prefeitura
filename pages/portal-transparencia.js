@@ -275,6 +275,23 @@ export default function Home() {
             flex-direction: column;
           }
         }
+
+        @media only screen and (max-width: 1139px) {
+          .grid {
+            padding: 0 5%;
+          }
+          .grid ul {
+            padding: 0;
+            margin-bottom: 0;
+          }
+          .grid li {
+            width: 100%;
+            padding: 5px 0;
+          }
+          .grid h1 {
+            font-size: 26px;
+          }
+        }
       `}</style>
 
       <style jsx global>{`

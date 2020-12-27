@@ -41,6 +41,9 @@ header {
     }
     .menu-link {
         display: none;
+        #fldMenu {
+            display: none;
+        }
     }
 }
 
@@ -57,15 +60,34 @@ header {
         }
         .menu {
             display: none;
+            background-color: #2d3142;
+            border-top: 2px solid #ef8354;
+            border-bottom: 2px solid #ef8354;
+            position: absolute;
+            top: 66px;
+            left: 0;
+            right: 0;
             ul {
                 flex-direction: column;
                 margin: 0;
                 padding: 0;
             }
+            li {
+                border-bottom: 1px solid #4f5d75;
+                margin: 0;
+                padding: 15px;
+            }
+            a {
+                padding: 0;
+                color: #fff;
+            }
         }
         .menu-link {
             display: block;
             width: 20px;
+            #fldMenu:checked + .menu {
+                display: block;
+            } 
         }
     }
   }
