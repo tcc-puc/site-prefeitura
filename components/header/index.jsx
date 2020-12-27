@@ -12,8 +12,8 @@ export default function Header() {
                 </a>
             </h1>
 
-            <span className="menu-link">
-                <label htmlFor="fldMenu">
+            <div className="container-menu">
+                <label htmlFor="fldMenu" className="menu-link">
                     <FontAwesomeIcon icon={faBars} color="#4f5d75" />
                 </label>
                 
@@ -32,7 +32,7 @@ export default function Header() {
                         </li>
                     </ul>
                 </nav>
-            </span>
+            </div>
 
           </div>
     </header>

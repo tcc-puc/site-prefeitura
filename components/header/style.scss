@@ -39,11 +39,9 @@ header {
     .acessibility-link {
         width: 21px;
     }
-    .menu-link {
+    .menu-link,
+    #fldMenu {
         display: none;
-        #fldMenu {
-            display: none;
-        }
     }
 }
 
@@ -85,9 +83,9 @@ header {
         .menu-link {
             display: block;
             width: 20px;
-            #fldMenu:checked + .menu {
-                display: block;
-            } 
         }
+        #fldMenu:checked + .menu {
+            display: block;
+        } 
     }
   }
