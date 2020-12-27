@@ -5,7 +5,7 @@ export default function ListaConvenios(list) {
   const info = list["content"]
 
     return (
-      <>
+      <div className="scroll">
         <table>
             <tr>
               <td>NÚMERO</td>
@@ -42,8 +42,7 @@ export default function ListaConvenios(list) {
                         <td>{item.valorCelebrado}</td>
                     </tr>;
             })}
-
         </table>
-      </>
+      </div>
     )
   }

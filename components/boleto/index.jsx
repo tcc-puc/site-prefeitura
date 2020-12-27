@@ -6,7 +6,7 @@ export default function Boleto(data) {
 
     return (
       <>
-        <section className="boleto">
+        <section className="boleto scroll">
         <div className="wrapper">
             <table>
                 <tr>

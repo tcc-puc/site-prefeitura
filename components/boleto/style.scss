@@ -49,3 +49,11 @@
         display: block;
     }
 }
+
+@media only screen and (max-width: 1139px) {
+    .scroll {
+        overflow: auto;
+        max-width: 330px;
+        margin-top: 30px;
+    }
+}

@@ -5,7 +5,7 @@ export default function ListaLicitacoes(list) {
   const info = list["content"]
 
     return (
-      <>
+      <div className="scroll">
         <table>
             <tr>
                 <td>DATA DE RESULTADO DA COMPRA</td>
@@ -32,6 +32,6 @@ export default function ListaLicitacoes(list) {
             })}
 
         </table>
-      </>
+      </div>
     )
   }
