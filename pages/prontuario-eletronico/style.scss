@@ -1,0 +1,74 @@
+// Globals
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    padding: 0 0 5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1140px;
+    margin-top: 3rem;
+  }
+
+  // Prontuario eletronico
+
+  .prontuario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    .field-container {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+    }
+    .patientData {
+        width: 30%;
+        .icon-user {
+            display: block;
+            width: 120px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+    }
+    .medicalRecord {
+        width: 65%;
+    }
+  }
