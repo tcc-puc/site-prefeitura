@@ -6,7 +6,7 @@ export default function ListaLicitacoes(list) {
 
     return (
       <div className="scroll">
-        <table>
+        <table className="listaLicitacoes">
           <tbody>
             <tr>
                 <td>DATA DE RESULTADO DA COMPRA</td>
