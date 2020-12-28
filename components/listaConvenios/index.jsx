@@ -6,7 +6,8 @@ export default function ListaConvenios(list) {
 
     return (
       <div className="scroll">
-        <table>
+        <table className="listaConvenios">
+          <tbody>
             <tr>
               <td>NÚMERO</td>
               <td>UF</td>
@@ -42,6 +43,7 @@ export default function ListaConvenios(list) {
                         <td>{item.valorCelebrado}</td>
                     </tr>;
             })}
+          </tbody>
         </table>
       </div>
     )
