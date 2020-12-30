@@ -69,7 +69,31 @@ main {
             width: 33%;
         }
     }
-  }
+    .half-field {
+        display: inline-block;
+        width: 48%;
+        &:nth-child(even) {
+            margin-right: 2%;
+        }
+    }
+    .container-btns {
+        text-align: center;
+        margin-top: 50px;
+        .btn-form {
+            border: 0;
+            background-color: #ef8354;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 0 10px;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
 
   // Form
   input,

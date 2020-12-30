@@ -16,12 +16,12 @@ export default function PatientProfile() {
 
         <div className="field-container">
           <label for="fname">Nome</label>
-          <input type="text" id="fname" name="fname" value="Karol Harumi" disabled="disabled" />
+          <input type="text" id="fname" name="fname" value="Maria da Silva" disabled="disabled" />
         </div>
 
         <div className="field-container">
           <label for="fage">Idade</label>
-          <input type="text" id="fage" name="fage" value="29 anos (19/10/1991)" disabled="disabled" />
+          <input type="text" id="fage" name="fage" value="29 anos (19/02/1991)" disabled="disabled" />
         </div>
 
         <div className="field-container">
@@ -61,17 +61,7 @@ export default function PatientProfile() {
 
         <div className="field-container">
           <label for="fobservation">Observação</label>
-          <input type="text" id="fobservation" name="fobservation" value="-" />
-        </div>
-
-        <div className="field-container">
-          <label for="fallergies">Alergias</label>
-          <textarea type="text" id="fallergies" name="fallergies" value="Rinite" />
-        </div>
-
-        <div className="field-container">
-          <label for="fmedicines">Medicamentos</label>
-          <textarea type="text" id="fmedicines" name="fmedicines" value="Medicamento 1 e Medicamento 2" />
+          <input type="text" id="fobservation" name="fobservation" value="-" disabled="disabled" />
         </div>
       </fieldset>
     )
