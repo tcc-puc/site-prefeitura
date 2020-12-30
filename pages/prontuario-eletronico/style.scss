@@ -40,7 +40,6 @@ main {
   }
 
   // Prontuario eletronico
-
   .prontuario {
     display: flex;
     flex-direction: row;
@@ -50,25 +49,51 @@ main {
         margin-bottom: 20px;
     }
     label {
-        display: block;
+        display: inline-block;
         margin-bottom: 10px;
         font-size: 14px;
     }
-    input,
+    input[type=text],
     textarea {
         width: 100%;
-        padding: 10px;
-    }
-    .patientData {
-        width: 30%;
-        .icon-user {
-            display: block;
-            width: 120px;
-            padding: 20px;
-            margin: 0 auto;
-        }
     }
     .medicalRecord {
         width: 65%;
     }
+    .list-exams {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline-block;
+            width: 33%;
+        }
+    }
+  }
+
+  // Form
+  input,
+  textarea {
+      border: 1px solid #bfc0c0;
+      border-radius: 3px;
+      outline: none;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #2d3142;
+      padding: 10px;
+      &:focus {
+        box-shadow: 0 1px 5px #bfc0c0;
+      }
+      &:disabled {
+          color: #bfc0c0;
+      }
+  }
+  fieldset {
+    border: 1px solid #bfc0c0;
+    padding: 2%;
+    margin: 0;
+    border-radius: 10px;
+  }
+  fieldset + fieldset {
+    margin-top: 30px;
   }
