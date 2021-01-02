@@ -1,14 +1,57 @@
 
+import { useState, useEffect } from 'react';
+
 import "./style.scss"
 import Head from 'next/head'
 
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Services from '../../components/services'
-import PatientProfile from '../../components/patientProfile'
+import PerfilPaciente from '../../components/perfilPaciente'
+import Loader from '../../components/loader'
+import Error from '../../components/error'
 
 export default function Home() {
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [data, setData] = useState({});
+  const [errorData, setErrorData] = useState({});
+
+  const handleSubmit = () => {
+    // TODO: trazer valor ao logar
+    const query = 12345678901;
+
+    setLoading(true)
+    setError(false)
+
+    setTimeout(()=> {
+      setLoading(false)
+
+      fetch(`http://localhost:3000/api/prontuario/${query}`)
+      .then(response => response.json())
+      .then(res => {
+
+        if (!res.error) {
+          setData(res)
+        } else {
+          setError(true)
+          setErrorData(res)
+        }
+
+      }).catch(function() {
+        console.log("error");
+    });
+
+    }, 1000)
+  }
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
+
+  const exams = data["exames"] !== undefined ? data["exames"] : [];
+  
   return (
     <div className="container">
       <Head>
@@ -24,120 +67,86 @@ export default function Home() {
             <h1>Prontuário Eletrônico</h1>
             <p>O Prontuário Eletrônico do Cidadão é um software onde todas as informações clínicas e administrativas do paciente ficam armazenadas, tendo como principal objetivo informatizar o fluxo de atendimento do cidadão realizado pelos profissionais de saúde das unidades de antendimento da Prefeitura de Bom Destino.</p>
 
-            <div className="prontuario">
-              <PatientProfile />
+            {error && <Error content={errorData} /> }
 
-              <div className="medicalRecord">
-                <fieldset>
-                  <legend>Anamnese</legend>
+            {loading ? <Loader /> : 
+              <div className="prontuario">
+                <PerfilPaciente />
 
-                  <div className="field-container">
-                    <label for="fname">Queixa Principal</label>
-                    <input type="text" id="fname" name="fname" disabled="disabled" value="Dores constantes de cabeça" />
+                <div className="medicalRecord">
+                  <fieldset>
+                    <legend>Anamnese</legend>
+
+                    <div className="field-container">
+                      <label htmlFor="fqueixa">Queixa Principal</label>
+                      <input type="text" id="fqueixa" name="fqueixa" disabled="disabled" defaultValue={data?.anamnese?.queixa_principal} />
+                    </div>
+
+                    <div className="field-container">
+                      <label htmlFor="fhistoria">História da doença atual</label>
+                      <input type="text" id="fhistoria" name="fhistoria" disabled="disabled" defaultValue={data?.anamnese?.historia_doenca_atual} />
+                    </div>
+
+                    <div className="field-container">
+                      <label htmlFor="falergias">Alergias</label>
+                      <input type="text" id="falergias" name="falergias" disabled="disabled" defaultValue={data?.anamnese?.alergias} />
+                    </div>
+
+                    <div className="field-container">
+                      <label htmlFor="fmedicamentos">Medicamentos</label>
+                      <input type="text" id="fmedicamentos" name="fmedicamentos" disabled="disabled" defaultValue={data?.anamnese?.medicamentos} />
+                    </div>
+
+                    <div className="field-container">
+                      <label htmlFor="fdoencasAnteriores">Doenças anteriores</label>
+                      <input type="text" id="fdoencasAnteriores" name="fdoencasAnteriores" disabled="disabled" defaultValue={data?.anamnese?.doencas_anteriores} />
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Exame físico</legend>
+
+                    <div className="field-container half-field">
+                      <label htmlFor="fpeso">Peso</label>
+                      <input type="text" id="fpeso" name="fpeso" defaultValue={data?.exame_fisico?.peso} disabled="disabled" />
+                    </div>
+
+                    <div className="field-container half-field">
+                      <label htmlFor="faltura">Altura</label>
+                      <input type="text" id="faltura" name="faltura" defaultValue={data?.exame_fisico?.altura} disabled="disabled" />
+                    </div>
+
+                    <div className="field-container half-field">
+                      <label htmlFor="ftemp">Temperatura</label>
+                      <input type="text" id="ftemp" name="ftemp" defaultValue={data?.exame_fisico?.temperatura} disabled="disabled" /> 
+                    </div>
+
+                    <div className="field-container half-field">
+                      <label htmlFor="fimc">IMC</label>
+                      <input type="text" id="fimc" name="fimc" defaultValue={data?.exame_fisico?.imc} disabled="disabled" />
+                    </div>
+
+                    <div className="field-container half-field">
+                    <label htmlFor="ffrequenciaResp">Frequência respiratória</label>
+                      <input type="text" id="ffrequenciaResp" name="ffrequenciaResp" defaultValue={data?.exame_fisico?.frequencia_respiratoria} disabled="disabled" />
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Solicitação de exames</legend>
+                      <ul className="list-exams">
+                        {exams.map(function(item, index){
+                          return <li key={index}>{item.nome}</li>;
+                          })}
+                      </ul>
+                  </fieldset>
+
+                  <div className="container-btns">
+                    <button className="btn-form">Solicitar alteração</button>
                   </div>
-
-                  <div className="field-container">
-                    <label for="fname">História da doença atual</label>
-                    <input type="text" id="fname" name="fname" disabled="disabled" value="N/A" />
-                  </div>
-
-                  <div className="field-container">
-                    <label for="fallergies">Alergias</label>
-                    <input type="text" id="fallergies" name="fallergies" disabled="disabled" value="-" />
-                  </div>
-
-                  <div className="field-container">
-                    <label for="fmedicines">Medicamentos</label>
-                    <input type="text" id="fmedicines" name="fmedicines" disabled="disabled" value="-" />
-                  </div>
-
-                  <div className="field-container">
-                    <label for="fname">Doenças anteriores</label>
-                    <input type="text" id="fname" name="fname" disabled="disabled" value="-" />
-                  </div>
-                </fieldset>
-
-                <fieldset>
-                  <legend>Exame físico</legend>
-
-                  <div className="field-container half-field">
-                    <label for="fweight">Peso</label>
-                    <input type="text" id="fweight" name="fweight" value="58 kg" disabled="disabled" />
-                  </div>
-
-                  <div className="field-container half-field">
-                    <label for="fheight">Altura</label>
-                    <input type="text" id="fheight" name="fheight" value="164 cm" disabled="disabled" />
-                  </div>
-
-                  <div className="field-container half-field">
-                    <label for="ffever">Temperatura</label>
-                    <input type="text" id="ffever" name="ffever" value="36" disabled="disabled" /> 
-                  </div>
-
-                  <div className="field-container half-field">
-                    <label for="fimc">IMC</label>
-                    <input type="text" id="fimc" name="fimc" value="-" disabled="disabled" />
-                  </div>
-
-                  <div className="field-container half-field">
-                    <label for="frespiratory">Frequência respiratória</label>
-                    <input type="text" id="frespiratory" name="frespiratory" value="50.00 rpm" disabled="disabled" />
-                  </div>
-                </fieldset>
-
-                <fieldset>
-                  <legend>Solicitação de exames</legend>
-
-                  <div className="field-container">
-                    <label for="fexam01">Exames</label>
-                    
-                    <ul className="list-exams">
-                      <li>
-                        <input type="checkbox" id="fexam01" name="fexam01" checked="checked" disabled="disabled" />
-                        <label for="fexam01">Hemograma</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam02" name="fexam02" checked="checked" disabled="disabled" />
-                        <label for="fexam02">Colesterol</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam03" name="fexam03" disabled="disabled" />
-                        <label for="fexam03">Ureia e Creatinina</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam04" name="fexam04" disabled="disabled" />
-                        <label for="fexam04">Papanicolau</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam05" name="fexam05" checked="checked" disabled="disabled" />
-                        <label for="fexam05">Exames de urina</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam06" name="fexam06" disabled="disabled" />
-                        <label for="fexam06">Exames de fezes</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam07" name="fexam07" checked="checked" disabled="disabled" />
-                        <label for="fexam07">Glicemia</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam08" name="fexam08" disabled="disabled" />
-                        <label for="fexam08">Transaminases</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fexam09" name="fexam09" disabled="disabled" />
-                        <label for="fexam09">TSH e T4 livre</label>
-                      </li>
-                    </ul>
-                  </div>
-                </fieldset>
-
-                <div className="container-btns">
-                  <button className="btn-form">Solicitar alteração</button>
                 </div>
               </div>
-            </div>
+            }
         </div>
       </main>
 

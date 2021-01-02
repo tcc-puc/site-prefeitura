@@ -61,13 +61,8 @@ main {
         width: 65%;
     }
     .list-exams {
-        list-style: none;
+        list-style: disc;
         margin: 0;
-        padding: 0;
-        li {
-            display: inline-block;
-            width: 33%;
-        }
     }
     .half-field {
         display: inline-block;
