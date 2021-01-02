@@ -5,7 +5,7 @@ const mock = [
         "nome": "Maria da Silva",
         "nascimento": "19/02/1991",
         "celular": "(11) 96966-0123",
-        "sexo": "F",
+        "genero": "F",
         "cpf": 12345678901,
         "observacao": "-",
         "endereco": {
@@ -14,6 +14,7 @@ const mock = [
             "bairro": "Campo Alegre",
             "uf": "MG",
             "numero": "123",
+            "complemento": "-",
         },
         "anamnese": {
             "queixa_principal": "Dores constantes de cabeça",
@@ -53,7 +54,7 @@ const mock = [
         "nome": "João dos Santos",
         "nascimento": "21/11/1962",
         "celular": "(11) 93213-4567",
-        "sexo": "M",
+        "genero": "M",
         "cpf": 10987654321,
         "observacao": "-",
         "endereco": {
@@ -62,6 +63,7 @@ const mock = [
             "bairro": "Jardim Tupan",
             "uf": "SP",
             "numero": "543",
+            "complemento": "-",
         },
         "anamnese": {
             "queixa_principal": "Dores constantes de cabeça",

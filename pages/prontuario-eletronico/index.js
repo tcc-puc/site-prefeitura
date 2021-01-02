@@ -71,7 +71,7 @@ export default function Home() {
 
             {loading ? <Loader /> : 
               <div className="prontuario">
-                <PerfilPaciente />
+                <PerfilPaciente content={data} />
 
                 <div className="medicalRecord">
                   <fieldset>
