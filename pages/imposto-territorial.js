@@ -63,12 +63,16 @@ export default function Home() {
 
       <main>
         <div className="grid">
-            <h1>Consulta IPTU</h1>
+            <h1>Consulta de Imposto Territorial</h1>
             <p>Este site é restrito aos contribuintes da Prefeitura Municipal de Bom Destino. <br/>
             Por favor, identifique seu imóvel fornecendo os dados solicitados:</p>
 
             <form onSubmit={handleSubmit}>
                 <input type="text" className="field" id="numeroCadastro" required placeholder="Número do cadastro IPTU" />
+                <select name="imposto" className="imposto">
+                  <option value="saab" selected>IPTU</option>
+                  <option value="mercedes">ITR</option>
+                </select>
                 <button>Pesquisar</button>
             </form>
 
@@ -77,7 +81,7 @@ export default function Home() {
 
             { boleto && <Boleto content={data} /> }
 
-            <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do IPTU.</p>
+            <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do seu Imposto Territorial.</p>
         </div>
       </main>
 
@@ -91,6 +95,18 @@ export default function Home() {
           justify-content: center;
           align-items: center;
           font-family: 'Roboto', sans-serif;
+        }
+
+        .imposto {
+          height: 40px;
+          width: 280px;
+          padding: 0 15px;
+          border-radius: 4px;
+          border-width: 1px;
+          display: block;
+          margin: 20px auto 0 auto;
+          box-sizing: border-box;
+          color: #000;
         }
 
         main {
