@@ -18,6 +18,8 @@ Em breve...
 - ReactJs
 - SASS
 - Font Awesome
+- Typescript
+- Docker
 
 ### Créditos
 
