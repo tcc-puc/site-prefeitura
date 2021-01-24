@@ -20,7 +20,7 @@ export default function Home() {
 
   const handleSubmit = () => {
     // TODO: trazer valor ao logar
-    const query = 12345678901;
+    const cpf = 12345678901;
 
     setLoading(true)
     setError(false)
@@ -28,7 +28,7 @@ export default function Home() {
     setTimeout(()=> {
       setLoading(false)
 
-      fetch(`http://localhost:3000/api/prontuario/${query}`)
+      fetch(`http://saude.bomdestino.com.br/prontuario/${cpf}`)
       .then(response => response.json())
       .then(res => {
 

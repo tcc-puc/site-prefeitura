@@ -32,7 +32,7 @@ export default function Home() {
 
       setLoading(false)
 
-      fetch(`http://localhost:3000/api/transparencia/${action}`)
+      fetch(`http://transparencia.bomdestino.com.br/recursos/${action}`)
       .then(response => response.json())
       .then(res => {
 

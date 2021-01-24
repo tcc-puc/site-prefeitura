@@ -21,7 +21,7 @@ export default function Home() {
 
     e.preventDefault();
 
-    const query = document.querySelector('#numeroCadastro').value
+    const inscricao = document.querySelector('#numeroCadastro').value
 
     setBoleto(false)
     setLoading(true)
@@ -31,7 +31,7 @@ export default function Home() {
 
       setLoading(false)
 
-      fetch(`http://localhost:3000/api/iptu/${query}`)
+      fetch(`http://territorial.bomdestino.com.br//calcular/iptu/${inscricao}`)
       .then(response => response.json())
       .then(res => {
 
