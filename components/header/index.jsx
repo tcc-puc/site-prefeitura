@@ -21,10 +21,15 @@ export default function Header() {
 
                 <nav className="menu">
                     <ul>
-                        <li><a href="/">Início</a></li>
-                        <li><a href="/">Serviços</a></li>
-                        <li><a href="/">Gestão</a></li>
-                        <li><a href="/">Cidade</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">Cidadão</a></li>
+                        <li><a href="/">Educação</a></li>
+                        <li><a href="/">Saúde</a></li>
+                        <li><a href="/">Ambiente</a></li>
+                        <li><a href="/">Agropecuária</a></li>
+                        <li><a href="/">Comércio</a></li>
+                        <li><a href="/">Lazer e Turismo</a></li>
+                        <li><a href="/">Fale Conosco</a></li>
                         <li>
                         <a href="#" className="acessibility-link">
                             <FontAwesomeIcon icon={faWheelchair} color="#4f5d75" />

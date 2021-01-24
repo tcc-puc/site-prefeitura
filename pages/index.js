@@ -19,6 +19,11 @@ export default function Home() {
 
       <main>
         <div className="grid">
+        <a href="https://nextjs.org/docs" className="card">
+            <h3>Coronavírus &rarr;</h3>
+            <p>O que você precisa saber sobre Covid-19</p>
+          </a>
+
           <a href="https://nextjs.org/docs" className="card">
             <h3>Concursos &rarr;</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in est dolor.</p>
