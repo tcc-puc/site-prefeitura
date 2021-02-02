@@ -31,7 +31,7 @@ export default function Home() {
 
       setLoading(false)
 
-      fetch(`http://territorial.bomdestino.com.br//calcular/iptu/${inscricao}`)
+      fetch(`http://territorial.bomdestino.com.br/calcular/iptu/${inscricao}`)
       .then(response => response.json())
       .then(res => {
 
