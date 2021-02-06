@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Head from 'next/head'
+import Head from "next/head";
 
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Services from '../components/services'
-import Boleto from '../components/boleto'
-import Loader from '../components/loader'
-import Error from '../components/error'
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Services from "../components/services";
+import Boleto from "../components/boleto";
+import Loader from "../components/loader";
+import Error from "../components/error";
 
 export default function Home() {
-
   const [boleto, setBoleto] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -18,37 +17,33 @@ export default function Home() {
   const [errorData, setErrorData] = useState({});
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
-    const inscricao = document.querySelector('#numeroCadastro').value
+    const inscricao = document.querySelector("#numeroCadastro").value;
 
-    setBoleto(false)
-    setLoading(true)
-    setError(false)
+    setBoleto(false);
+    setLoading(true);
+    setError(false);
 
-    setTimeout(()=> {
-
-      setLoading(false)
+    setTimeout(() => {
+      setLoading(false);
 
       fetch(`http://territorial.bomdestino.com.br/calcular/iptu/${inscricao}`)
-      .then(response => response.json())
-      .then(res => {
-
-        if (!res.error) {
-          setData(res)
-          setBoleto(true)
-        } else {
-          setError(true)
-          setErrorData(res)
-        }
-
-      }).catch(function() {
-        console.log("error");
-    });
-
-    }, 1000)
-  }
+        .then((response) => response.json())
+        .then((res) => {
+          if (!res.error) {
+            setData(res);
+            setBoleto(true);
+          } else {
+            setError(true);
+            setErrorData(res);
+          }
+        })
+        .catch(function () {
+          console.log("error");
+        });
+    }, 1000);
+  };
 
   return (
     <div className="container">
@@ -63,25 +58,39 @@ export default function Home() {
 
       <main>
         <div className="grid">
-            <h1>Consulta de Imposto Territorial</h1>
-            <p>Este site é restrito aos contribuintes da Prefeitura Municipal de Bom Destino. <br/>
-            Por favor, identifique seu imóvel fornecendo os dados solicitados:</p>
+          <h1>Consulta de Imposto Territorial</h1>
+          <p>
+            Este site é restrito aos contribuintes da Prefeitura Municipal de
+            Bom Destino. <br />
+            Por favor, identifique seu imóvel fornecendo os dados solicitados:
+          </p>
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" className="field" id="numeroCadastro" required placeholder="Número do cadastro IPTU" />
-                <select name="imposto" className="imposto">
-                  <option value="saab" selected>IPTU</option>
-                  <option value="mercedes">ITR</option>
-                </select>
-                <button>Pesquisar</button>
-            </form>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="field"
+              id="numeroCadastro"
+              required
+              placeholder="Número do cadastro IPTU"
+            />
+            <select name="imposto" className="imposto">
+              <option value="saab" selected>
+                IPTU
+              </option>
+              <option value="mercedes">ITR</option>
+            </select>
+            <button>Pesquisar</button>
+          </form>
 
-            {loading && <Loader /> }
-            {error && <Error content={errorData} /> }
+          {loading && <Loader />}
+          {error && <Error content={errorData} />}
 
-            { boleto && <Boleto content={data} /> }
+          {boleto && <Boleto content={data} />}
 
-            <p>Contribuinte, verifique junto ao seu banco as condições e formas para fazer o pagamento do seu Imposto Territorial.</p>
+          <p>
+            Contribuinte, verifique junto ao seu banco as condições e formas
+            para fazer o pagamento do seu Imposto Territorial.
+          </p>
         </div>
       </main>
 
@@ -94,7 +103,7 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          font-family: 'Roboto', sans-serif;
+          font-family: "Roboto", sans-serif;
         }
 
         .imposto {
@@ -177,22 +186,22 @@ export default function Home() {
         }
 
         .field {
-            height: 40px;
-            width: 280px;
-            padding: 0 15px;
-            border-radius: 4px;
-            border-width: 1px;
+          height: 40px;
+          width: 280px;
+          padding: 0 15px;
+          border-radius: 4px;
+          border-width: 1px;
         }
 
         button {
-            display: block;
-            width: 120px;
-            height: 40px;
-            background: #fff;
-            border: 1px solid #427ECC;
-            color: #427ECC;
-            border-radius: 4px;
-            margin: 20px auto 0 auto;
+          display: block;
+          width: 120px;
+          height: 40px;
+          background: #fff;
+          border: 1px solid #427ecc;
+          color: #427ecc;
+          border-radius: 4px;
+          margin: 20px auto 0 auto;
         }
 
         code {
@@ -214,8 +223,8 @@ export default function Home() {
         }
 
         .grid p {
-            width: 100%;
-            text-align: center;
+          width: 100%;
+          text-align: center;
         }
 
         .card {
@@ -258,6 +267,16 @@ export default function Home() {
             flex-direction: column;
           }
         }
+
+        @media only screen and (max-width: 1139px) {
+          h1 {
+            font-size: 26px;
+            text-align: center;
+          }
+          p {
+            padding: 20px;
+          }
+        }
       `}</style>
 
       <style jsx global>{`
@@ -275,5 +294,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }

@@ -1,59 +1,67 @@
 .boleto {
+  width: 100%;
+  margin: 30px 0;
+  min-height: 600px;
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+  }
+
+  table {
+    padding: 0;
+    margin: 0 0 0px 0;
     width: 100%;
-    margin: 30px 0;
-    min-height: 600px;
-
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1140px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-        align-content: stretch;
+    border-bottom: 1px solid black;
+    td {
+      padding: 5px;
+      text-transform: uppercase;
     }
-
-    table {
-        padding: 0;
-        margin: 0 0 0px 0;
-        width: 100%;
-        border-bottom: 1px solid black;
-        td {
-            padding: 5px;
-            text-transform: uppercase;
-        }
-        .borderRight {
-            border-right: 1px solid black;
-        }
-        .borderBottom {
-            border-bottom: 1px solid black;
-        }
-        b {
-            font-size: 12px;
-            display: block;
-            margin-bottom: 10px;
-        }
-        label {
-            display: block;
-        }
-        h2 {
-            margin: 0;
-            font-weight: 400;
-            font-size: 18px;
-        }
+    .borderRight {
+      border-right: 1px solid black;
     }
-    .center {
-        text-align: center;
-        max-width: 700px;
-        display: block;
+    .borderBottom {
+      border-bottom: 1px solid black;
     }
+    b {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+    }
+    h2 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 18px;
+    }
+  }
+  .center {
+    text-align: center;
+    max-width: 700px;
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 1139px) {
-    .scroll {
-        overflow: auto;
-        max-width: 330px;
-        margin-top: 30px;
+  .scroll {
+    overflow: auto;
+    max-width: 330px;
+    margin-top: 30px;
+  }
+  table {
+    td {
+      font-size: 11px;
     }
+    h2 {
+      display: none;
+    }
+  }
 }
